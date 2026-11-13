@@ -20,6 +20,9 @@ module.exports = async (req, res) => {
     if (queryParams.isTado !== undefined) {
       delete queryParams.isTado;
       scriptUrl = process.env.SCRIPT_URL_TADO;
+    } else if (queryParams.isAST !== undefined) {   // APP AST per la gestione degli orari di AST
+      delete queryParams.isAST;
+      scriptUrl = process.env.SCRIPT_URL_AST;
     } else {
       // Altrimenti gestiamo la logica originaria dell'altra app basata su appVersion
       const appVersion = queryParams.appVersion || '';
